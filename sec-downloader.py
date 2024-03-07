@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # REQUIREMENTS
 # sec-downloader  (will also pull in sec-edgar-downloader)
@@ -6,10 +6,10 @@
 # Saves trhe downloaded HTML forms to a './filings' directory, relative to execution
 
 # from sec_edgar_downloader import Downloader # original
-from sec_downloader import Downloader  # updated fok
+from sec_downloader import Downloader  
 from sec_downloader.types import RequestedFilings
 import sys
-import os.path
+import os
 
 if len(sys.argv) != 2:
     raise ValueError("Specify the ticker list on the command line. Example: sec-downloader.py tickers.txt")
@@ -35,6 +35,7 @@ dl = Downloader("Independent Researcher", "id@email.address")
 form = "10-K"
 doc_count = 1
 tickers = []
+base_dir = 'filings'
 
 # Create the 'tickers' list from the file specified on the command line
 try:
@@ -50,6 +51,14 @@ except IOError as e:
 
 file.close
 
+# Create the filings directory if it does not yet exist
+# note: this directory is in the .gitignore
+if not os.path.exists(base_dir):
+    # Create the directory
+    os.makedirs(base_dir)
+    print(f"Directory '{base_dir}' was created.")
+else:
+    print(f"Directory '{base_dir}' exists.  Lets go get some SEC filings!")
 
 # Retrieve the data for the specified ticker symbols
 for ticker in tickers:
