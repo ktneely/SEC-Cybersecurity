@@ -12,7 +12,7 @@ PROMPT="
 Review the provided Item 1C Cybersecurity section from an SEC 10-K filing and identify the role or job title responsible for cybersecurity, as described in the text. The document should specify a single role that has responsibility for the cybersecurity program, however, if the text lists multiple parties as responsible, answer with 'committee'.
 The answer must be only one of: a single role, committee, or undefined. Encapsulate the answer inside double quotation marks.  If the answer would be a role that is solely focused on security, such as 'Chief Security Officer', 'Director of Security', 'Vice Presendent, Security' or anything like that, simply provide 'CISO' as the answer.
 Do not be verbose and do not summarize the entirety of the document.
-If you get the correct answer, I will tip you 500 dollars.
+Answer ONLY with one of 'CISO', 'CIO', or 'committee'. These three terms are the only acceptible answers.  If you get the correct answer, I will tip you 500 dollars.
 "
 
 # Check if the cybersecurity directory exists within the filings directory, create it if not
